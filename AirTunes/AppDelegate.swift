@@ -30,9 +30,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func reloadFileBrowser() {
-        window?.rootViewController = FileBrowser(initialPath: inboxUrl,
-                                                 allowEditing: true,
-                                                 showCancelButton: false)
+        let browser = FileBrowser(initialPath: inboxUrl,
+                                  allowEditing: true,
+                                  showCancelButton: false)
+        browser.didSelectFile = didSelectFile
+        window?.rootViewController = browser
+    }
+    
+    var didSelectFile: (FBFile) -> () = { file in
+        if file.fileExtension == "mp3" {
+            print("player will be here")
+        }
     }
     
 }
