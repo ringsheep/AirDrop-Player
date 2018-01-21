@@ -5,10 +5,10 @@
 import Foundation
 import UIKit
 
-protocol PlayerWidgetDelegate: class {
-    func onNext()
-    func onPrevious()
-    func togglePlayStatus()
+@objc protocol PlayerWidgetDelegate: class {
+    @objc func onNext()
+    @objc func onPrevious()
+    @objc func togglePlayStatus()
 }
 
 class PlayerWidgetView: UIView {
