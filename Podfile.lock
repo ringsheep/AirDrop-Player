@@ -1,12 +1,24 @@
 PODS:
   - FileBrowser (1.0.0)
+  - KDEAudioPlayer (1.1.4)
 
 DEPENDENCIES:
   - FileBrowser (= 1.0)
+  - KDEAudioPlayer (from `https://github.com/senthilkumarv/AudioPlayer.git`)
+
+EXTERNAL SOURCES:
+  KDEAudioPlayer:
+    :git: https://github.com/senthilkumarv/AudioPlayer.git
+
+CHECKOUT OPTIONS:
+  KDEAudioPlayer:
+    :commit: 8bbd67ceacc9109944c221083d3d44c5bf1fa448
+    :git: https://github.com/senthilkumarv/AudioPlayer.git
 
 SPEC CHECKSUMS:
   FileBrowser: 2ca91ff61c9ea09665eb3b8f9e64a7a77e66a0bf
+  KDEAudioPlayer: 67b188cbc84c59765a6ffe9262552c72886643c9
 
-PODFILE CHECKSUM: 19b9d1208c1b216586b8d318dda63455c742a3fb
+PODFILE CHECKSUM: 46f4f4c3710c79f583481dc3f396baa97ece53d6
 
 COCOAPODS: 1.3.1

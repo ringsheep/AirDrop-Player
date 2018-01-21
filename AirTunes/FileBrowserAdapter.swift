@@ -5,6 +5,7 @@
 import Foundation
 import FileBrowser
 import AVFoundation
+import KDEAudioPlayer
 
 protocol FileBrowserAdaptable {
     var currentBrowser: FileBrowser? { get set }
@@ -17,7 +18,22 @@ class FileBrowserAdapter: FileBrowserAdaptable {
     lazy var inboxUrl = FileManager.default.urls(for: .documentDirectory,
                                                  in: .userDomainMask).last?.appendingPathComponent(inboxFolderUrlComponent)
     var currentBrowser: FileBrowser?
-    var isPlaying: Bool = false
+    var isPlaying: Bool = false {
+        didSet {
+            if isPlaying {
+                player.resume()
+            } else {
+                player.pause()
+            }
+        }
+    }
+    
+    lazy var player: AudioPlayer = {
+        let player = AudioPlayer()
+        player.delegate = self
+        return player
+    }()
+    
     lazy var playerWidget: PlayerWidgetView = {
         let view = PlayerWidgetView()
         view.delegate = self
@@ -39,12 +55,8 @@ class FileBrowserAdapter: FileBrowserAdaptable {
     
     lazy var didSelectFile: (FBFile) -> () = { [weak self] file in
         if file.fileExtension == "mp3" {
-//            guard let player = self?.player(for: file) else { return }
-//            self?.currentBrowser?.present(player,
-//                                          animated: true,
-//                                          completion: nil)
-            
             self?.setupPlayerWidget()
+            self?.playItems(for: file)
         }
     }
     
@@ -57,20 +69,20 @@ class FileBrowserAdapter: FileBrowserAdaptable {
         playerWidget.trailingAnchor.constraint(equalTo: currentBrowser.view.trailingAnchor).isActive = true
     }
     
-//    func player(for file: FBFile) -> PandoraPlayer {
-//        let allPaths = allPathsInDirectory(file: file)
-//        let allItems = allPaths?.map({ AVPlayerItem(url: $0) }) ?? []
-//        let currentItemIndex = allPaths?.index(of: file.filePath) ?? 0
-//        
-//        let player = PandoraPlayer.configure(withAVItems: allItems)
-//        player.currentSongDidChanged(index: currentItemIndex)
-//        
-//        player.onClose = { _ in
-//            player.dismiss(animated: true, completion: nil)
-//        }
-//        
-//        return player
-//    }
+    func playItems(for file: FBFile) {
+        player.play(items: audioItems(for: file),
+                    startAtIndex: index(of: file))
+    }
+    
+    func index(of file: FBFile) -> Int {
+        return allPathsInDirectory(file: file)?.index(of: file.filePath) ?? 0
+    }
+    
+    func audioItems(for file: FBFile) -> [AudioItem] {
+        return allPathsInDirectory(file: file)?.flatMap({ (url) -> AudioItem? in
+            return AudioItem(mediumQualitySoundURL: url)
+        }) ?? []
+    }
     
     func allPathsInDirectory(file: FBFile) -> [URL]? {
         let currentDirectory = file.filePath.deletingLastPathComponent()
@@ -82,19 +94,27 @@ class FileBrowserAdapter: FileBrowserAdaptable {
         return allPathsInDirectory
     }
     
+    
+    
 }
 
 extension FileBrowserAdapter: PlayerWidgetDelegate {
     
     func onNext() {
+        player.nextOrStop()
     }
     
     func onPrevious() {
+        player.previous()
     }
     
     func togglePlayStatus() {
         isPlaying = !isPlaying
         playerWidget.handlePlayButtonState(isPlaying: isPlaying)
     }
+    
+}
+
+extension FileBrowserAdapter: AudioPlayerDelegate {
     
 }
