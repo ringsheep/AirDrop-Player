@@ -11,6 +11,7 @@
 		9904CBED1FF8FF91003935C9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9904CBEC1FF8FF91003935C9 /* Assets.xcassets */; };
 		9904CBF01FF8FF91003935C9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9904CBEE1FF8FF91003935C9 /* LaunchScreen.storyboard */; };
 		99AB3DD92013FE940054864A /* FileBrowserAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99AB3DD82013FE940054864A /* FileBrowserAdapter.swift */; };
+		99DB34592014EC1800443279 /* PlayerWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99DB34582014EC1800443279 /* PlayerWidgetView.swift */; };
 		FE37C45658AFA20B523DAEC3 /* Pods_AirTunes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66673B413C9C20E26ECB4CCF /* Pods_AirTunes.framework */; };
 /* End PBXBuildFile section */
 
@@ -23,6 +24,7 @@
 		9904CBEF1FF8FF91003935C9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9904CBF11FF8FF91003935C9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		99AB3DD82013FE940054864A /* FileBrowserAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileBrowserAdapter.swift; sourceTree = "<group>"; };
+		99DB34582014EC1800443279 /* PlayerWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerWidgetView.swift; sourceTree = "<group>"; };
 		E0717075DC3271E927BEDEFC /* Pods-AirTunes.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AirTunes.release.xcconfig"; path = "Pods/Target Support Files/Pods-AirTunes/Pods-AirTunes.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -73,6 +75,7 @@
 				9904CBEE1FF8FF91003935C9 /* LaunchScreen.storyboard */,
 				9904CBF11FF8FF91003935C9 /* Info.plist */,
 				99AB3DD82013FE940054864A /* FileBrowserAdapter.swift */,
+				99DB34582014EC1800443279 /* PlayerWidgetView.swift */,
 			);
 			path = AirTunes;
 			sourceTree = "<group>";
@@ -215,6 +218,7 @@
 			files = (
 				99AB3DD92013FE940054864A /* FileBrowserAdapter.swift in Sources */,
 				9904CBE61FF8FF91003935C9 /* AppDelegate.swift in Sources */,
+				99DB34592014EC1800443279 /* PlayerWidgetView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
