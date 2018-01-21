@@ -3,15 +3,12 @@
 //
 
 import UIKit
-import FileBrowser
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
-    let inboxFolderUrlComponent = "Inbox/"
-    lazy var inboxUrl = FileManager.default.urls(for: .documentDirectory,
-                                                 in: .userDomainMask).last?.appendingPathComponent(inboxFolderUrlComponent)
+    var browserAdapter: FileBrowserAdaptable = FileBrowserAdapter()
     
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
@@ -30,17 +27,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func reloadFileBrowser() {
-        let browser = FileBrowser(initialPath: inboxUrl,
-                                  allowEditing: true,
-                                  showCancelButton: false)
-        browser.didSelectFile = didSelectFile
-        window?.rootViewController = browser
-    }
-    
-    var didSelectFile: (FBFile) -> () = { file in
-        if file.fileExtension == "mp3" {
-            print("player will be here")
-        }
+        browserAdapter.reloadFileBrowser()
+        window?.rootViewController = browserAdapter.currentBrowser
     }
     
 }
