@@ -4,7 +4,6 @@
 
 import Foundation
 import FileBrowser
-import PandoraPlayer
 import AVFoundation
 
 protocol FileBrowserAdaptable {
@@ -44,7 +43,7 @@ class FileBrowserAdapter: FileBrowserAdaptable {
     func player(for file: FBFile) -> PandoraPlayer {
         let allPaths = allPathsInDirectory(file: file)
         let allItems = allPaths?.map({ AVPlayerItem(url: $0) }) ?? []
-        let currentItemIndex = allPaths?.index(of: file.filePath)
+        let currentItemIndex = allPaths?.index(of: file.filePath) ?? 0
         
         let player = PandoraPlayer.configure(withAVItems: allItems)
         player.currentSongDidChanged(index: currentItemIndex)

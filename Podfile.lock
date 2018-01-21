@@ -1,20 +1,12 @@
 PODS:
-  - AudioKit (4.0.3):
-    - AudioKit/UI (= 4.0.3)
-  - AudioKit/UI (4.0.3)
   - FileBrowser (1.0.0)
-  - PandoraPlayer (1.2):
-    - AudioKit (= 4.0.3)
 
 DEPENDENCIES:
-  - FileBrowser (~> 1.0)
-  - PandoraPlayer (= 1.2)
+  - FileBrowser (= 1.0)
 
 SPEC CHECKSUMS:
-  AudioKit: 914e5e8fcbf35099ff2398775342446a2d81476d
   FileBrowser: 2ca91ff61c9ea09665eb3b8f9e64a7a77e66a0bf
-  PandoraPlayer: 6e2f905ad7c6e51294e6f090d304f08a724174aa
 
-PODFILE CHECKSUM: f2abbf9ca4f3de92cae5165e96c3566680b4dc2b
+PODFILE CHECKSUM: 19b9d1208c1b216586b8d318dda63455c742a3fb
 
 COCOAPODS: 1.3.1
