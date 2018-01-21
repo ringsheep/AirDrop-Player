@@ -8,6 +8,7 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
+    let playerController: FileBrowserAudioPlayerDelegate = AudioPlayerChildViewController()
     var browserAdapter: FileBrowserAdaptable = FileBrowserAdapter()
     
     func application(_ application: UIApplication,
@@ -28,7 +29,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func reloadFileBrowser() {
         browserAdapter.reloadFileBrowser()
+        browserAdapter.didSelectFile = { [weak self] file in
+            if file.fileExtension == "mp3" {
+                self?.playerController.playItems(for: file.filePath)
+            }
+        }
         window?.rootViewController = browserAdapter.currentBrowser
+        if let currentBrowser = browserAdapter.currentBrowser {
+            playerController.setupPlayerWidget(on: currentBrowser)
+        }
     }
     
 }

@@ -12,6 +12,8 @@
 		9904CBF01FF8FF91003935C9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9904CBEE1FF8FF91003935C9 /* LaunchScreen.storyboard */; };
 		99AB3DD92013FE940054864A /* FileBrowserAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99AB3DD82013FE940054864A /* FileBrowserAdapter.swift */; };
 		99DB34592014EC1800443279 /* PlayerWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99DB34582014EC1800443279 /* PlayerWidgetView.swift */; };
+		99DB345B2015236E00443279 /* AudioPlayerChildViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99DB345A2015236E00443279 /* AudioPlayerChildViewController.swift */; };
+		99DB345D2015263E00443279 /* FileManager+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99DB345C2015263E00443279 /* FileManager+Extension.swift */; };
 		FE37C45658AFA20B523DAEC3 /* Pods_AirTunes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66673B413C9C20E26ECB4CCF /* Pods_AirTunes.framework */; };
 /* End PBXBuildFile section */
 
@@ -25,6 +27,8 @@
 		9904CBF11FF8FF91003935C9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		99AB3DD82013FE940054864A /* FileBrowserAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileBrowserAdapter.swift; sourceTree = "<group>"; };
 		99DB34582014EC1800443279 /* PlayerWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerWidgetView.swift; sourceTree = "<group>"; };
+		99DB345A2015236E00443279 /* AudioPlayerChildViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayerChildViewController.swift; sourceTree = "<group>"; };
+		99DB345C2015263E00443279 /* FileManager+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager+Extension.swift"; sourceTree = "<group>"; };
 		E0717075DC3271E927BEDEFC /* Pods-AirTunes.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AirTunes.release.xcconfig"; path = "Pods/Target Support Files/Pods-AirTunes/Pods-AirTunes.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -76,6 +80,8 @@
 				9904CBF11FF8FF91003935C9 /* Info.plist */,
 				99AB3DD82013FE940054864A /* FileBrowserAdapter.swift */,
 				99DB34582014EC1800443279 /* PlayerWidgetView.swift */,
+				99DB345A2015236E00443279 /* AudioPlayerChildViewController.swift */,
+				99DB345C2015263E00443279 /* FileManager+Extension.swift */,
 			);
 			path = AirTunes;
 			sourceTree = "<group>";
@@ -218,6 +224,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				99DB345B2015236E00443279 /* AudioPlayerChildViewController.swift in Sources */,
+				99DB345D2015263E00443279 /* FileManager+Extension.swift in Sources */,
 				99AB3DD92013FE940054864A /* FileBrowserAdapter.swift in Sources */,
 				9904CBE61FF8FF91003935C9 /* AppDelegate.swift in Sources */,
 				99DB34592014EC1800443279 /* PlayerWidgetView.swift in Sources */,
