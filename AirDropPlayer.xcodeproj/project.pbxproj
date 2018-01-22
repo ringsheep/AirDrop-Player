@@ -396,6 +396,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = L738KA9SZ5;
 				INFOPLIST_FILE = "$(SRCROOT)/AirDropPlayer/Resources/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zinyakov.AirDropPlayer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -412,6 +413,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = L738KA9SZ5;
 				INFOPLIST_FILE = "$(SRCROOT)/AirDropPlayer/Resources/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zinyakov.AirDropPlayer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
