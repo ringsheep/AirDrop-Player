@@ -9,7 +9,7 @@ extension AudioPlayer {
     
     var isPlayingFirstItem: Bool {
         guard let currentItem = currentItem else { return false }
-        return (items?.index(of: currentItem) == 0) ?? false
+        return items?.index(of: currentItem) == 0
     }
     
 }
