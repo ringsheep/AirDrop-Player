@@ -22,12 +22,6 @@ class AudioPlayerViewModel {
     
     weak var viewDelegate: AudioPlayerViewDelegate?
     
-    var isPlaying: Bool = false {
-        didSet {
-            viewDelegate?.handlePlayButtonState(isPlaying: isPlaying)
-        }
-    }
-    
     lazy var player: AudioPlayer = {
         let player = AudioPlayer()
         player.delegate = self
@@ -59,7 +53,6 @@ extension AudioPlayerViewModel: PlayerControlDelegate {
         player.pause()
         guard player.hasNext else {
             player.stop()
-            viewDelegate?.handleAppearanceStatus(isHidden: true)
             return
         }
         player.nextOrStop()
@@ -69,16 +62,13 @@ extension AudioPlayerViewModel: PlayerControlDelegate {
         player.pause()
         if player.hasPrevious == false || player.isPlayingFirstItem {
             player.stop()
-            viewDelegate?.handleAppearanceStatus(isHidden: true)
             return
         }
         player.previous()
     }
     
     func togglePlayStatus() {
-        isPlaying = !isPlaying
-        
-        if isPlaying {
+        if player.state == .paused {
             player.resume()
         } else {
             player.pause()
@@ -93,11 +83,9 @@ extension AudioPlayerViewModel: FileBrowserAudioPlayerDelegate {
         guard file.isAudioType else {
             return
         }
-        viewDelegate?.handleAppearanceStatus(isHidden: false)
         let itemsPaths = audioPaths(for: file)
         player.play(items: audioItems(with: itemsPaths),
                     startAtIndex: itemsPaths.index(of: file) ?? 0)
-        isPlaying = true
     }
     
     func remoteControlReceived(with event: UIEvent?) {
@@ -109,6 +97,23 @@ extension AudioPlayerViewModel: FileBrowserAudioPlayerDelegate {
 }
 
 extension AudioPlayerViewModel: AudioPlayerDelegate {
+    
+    func audioPlayer(_ audioPlayer: AudioPlayer,
+                     didChangeStateFrom from: AudioPlayerState,
+                     to state: AudioPlayerState) {
+        switch state {
+        case .stopped:
+            viewDelegate?.handleAppearanceStatus(isHidden: true)
+            viewDelegate?.handlePlayButtonState(isPlaying: false)
+        case .paused:
+            viewDelegate?.handlePlayButtonState(isPlaying: false)
+        case .playing:
+            viewDelegate?.handleAppearanceStatus(isHidden: false)
+            viewDelegate?.handlePlayButtonState(isPlaying: true)
+        default:
+            break
+        }
+    }
     
     func audioPlayer(_ audioPlayer: AudioPlayer, willStartPlaying item: AudioItem) {
         let prefix = "Now Playing:"
