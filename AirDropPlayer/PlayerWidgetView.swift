@@ -5,16 +5,16 @@
 import Foundation
 import UIKit
 
-@objc protocol PlayerWidgetDelegate: class {
+@objc protocol PlayerControlDelegate: class {
     @objc func onNext()
     @objc func onPrevious()
     @objc func togglePlayStatus()
 }
 
-class PlayerWidgetView: UIView {
+class PlayerWidgetView: UIView, AudioPlayerViewDelegate {
     
     struct Appearance {
-        var deafaultOffset: CGFloat = 5.0
+        var deafaultOffset: CGFloat = 12.0
         var playButtonSide: CGFloat = 50.0
         var nextPreviousButtonSide: CGFloat = 30.0
         var trackTitleLabelFontSize: CGFloat = 14.0
@@ -22,7 +22,7 @@ class PlayerWidgetView: UIView {
     }
     
     let appearance = Appearance()
-    weak var delegate: PlayerWidgetDelegate?
+    weak var delegate: PlayerControlDelegate?
     
     lazy var trackTitleLabel: UILabel = {
         let label = UILabel()
@@ -99,7 +99,6 @@ class PlayerWidgetView: UIView {
         nextButton.bottomAnchor.constraint(equalTo: bottomAnchor,
                                            constant: -appearance.deafaultOffset).isActive = true
         nextButton.widthAnchor.constraint(equalToConstant: appearance.nextPreviousButtonSide).isActive = true
-        nextButton.heightAnchor.constraint(equalToConstant: appearance.nextPreviousButtonSide).isActive = true
     }
     
     func setupPlayButtonConstraints() {
@@ -110,7 +109,6 @@ class PlayerWidgetView: UIView {
         playButton.bottomAnchor.constraint(equalTo: bottomAnchor,
                                            constant: -appearance.deafaultOffset).isActive = true
         playButton.widthAnchor.constraint(equalToConstant: appearance.playButtonSide).isActive = true
-        playButton.heightAnchor.constraint(equalToConstant: appearance.playButtonSide).isActive = true
     }
     
     func setupPreviousButtonConstraints() {
@@ -121,7 +119,6 @@ class PlayerWidgetView: UIView {
         previousButton.bottomAnchor.constraint(equalTo: bottomAnchor,
                                                constant: -appearance.deafaultOffset).isActive = true
         previousButton.widthAnchor.constraint(equalToConstant: appearance.nextPreviousButtonSide).isActive = true
-        previousButton.heightAnchor.constraint(equalToConstant: appearance.nextPreviousButtonSide).isActive = true
     }
     
     func setupTrackTitleLabelConstraints() {
@@ -141,6 +138,10 @@ class PlayerWidgetView: UIView {
         } else {
             playButton.setTitle("▶️", for: .normal)
         }
+    }
+    
+    func handleAppearanceStatus(isHidden: Bool) {
+        self.isHidden = isHidden
     }
     
     var trackTitle: String? {
