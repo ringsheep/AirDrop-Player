@@ -1,4 +1,4 @@
-target 'AirTunes' do
+target 'AirDropPlayer' do
   use_frameworks!
 
   source 'https://github.com/CocoaPods/Specs.git'
